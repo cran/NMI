@@ -21,20 +21,20 @@ for(i in 1:dim(P)[1])
 {
   for(j in 1:dim(P)[2])
   {
-    P[i,j]<-length(which(XC[i] %in% YC[j]))
+    P[i,j]<-length(which(as.vector(unlist(XC[i])) %in% as.vector(unlist(YC[j]))))
   }
 }
 # PI
-Pi<-colSums(P)
+Pi<-rowSums(P)
 # PJ
-Pj<-rowSums(P)
+Pj<-colSums(P)
 # P
 PP<-sum(P)
 # Numerator
 D<-0
 for(i in 1:dim(P)[1])
 {
-  for(j in 1:dim(P)[1])
+  for(j in 1:dim(P)[2])
   {
     if(Pi[i]*Pj[j]==0){D<-D+0}
     else{
